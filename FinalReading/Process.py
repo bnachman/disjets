@@ -101,12 +101,17 @@ def applyCut(inputDataframe, cut, text=None,verbose=False):
 
 def applyCutsJets(df,isMC=False,verbose=False):
     temp = df
+    
+    temp.eval('E_sq = gene_px**2 + gene_py**2 + gene_pz**2 + 0.00051099895**2', inplace=True)  
+    temp.eval('sine_theta_e = sqrt(gene_px**2 + gene_py**2)/sqrt(gene_px**2 + gene_py**2 + gene_pz**2)', inplace=True)      
+    temp.eval('gen_y_sigma = 1-E_sq*sine_theta_e**2/gen_Q2', inplace=True)      
+    
 
     temp['pass_reco'] = np.where(temp['jet_pt']>0, 1, 0)
     if (isMC):
         temp['pass_truth'] = np.where(temp['genjet_pt']*temp['gen_Q2']>0, 1, 0)
         temp['pass_fiducial'] = np.where(temp['pass_truth']*(temp['gen_Q2'] > 150)*
-                                         (temp['gen_y']>0.2)*(temp['gen_y']<0.7)*
+                                         (temp['gen_y_sigma']>0.2)*(temp['gen_y_sigma']<0.7)*
                                          (temp['genjet_pt']>10)*
                                          (temp['genjet_eta']<2.5)*
                                          (temp['genjet_eta']>-1.), 1, 0)
@@ -191,7 +196,7 @@ def applyCutsJets(df,isMC=False,verbose=False):
     if (isMC):
         temp = temp[['gene_px','gene_py','gene_pz','e_px','e_py','e_pz','genjet_pt',
                  'jet_pt','genjet_phi','jet_phi','genjet_eta','jet_eta','genjet_qtnorm',
-                     'jet_qtnorm','genjet_dphi','jet_dphi', 'gen_y', 'gen_Q2','wgt','pass_reco','pass_truth', 'pass_fiducial']]
+                     'jet_qtnorm','genjet_dphi','jet_dphi', 'gen_y_sigma','gen_Q2','wgt','pass_reco','pass_truth', 'pass_fiducial']]
     else:
         temp = temp[['e_px','e_py','e_pz','jet_pt','jet_phi','jet_eta','jet_qtnorm','jet_dphi','wgt','pass_reco']]
         
