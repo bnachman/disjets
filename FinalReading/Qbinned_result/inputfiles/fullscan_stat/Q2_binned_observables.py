@@ -128,7 +128,7 @@ for seed in tqdm(np.concatenate([range(1,30),range(34,45),[46,47,48,49],range(54
 
 
             fig.savefig("storage_plots/"+mc_name[i]+"_"+mc_tag_out[i]+"Iteration"+str(iteration)+"_"+str(seed)+cut_label+"_Step2_eta.pdf",bbox_inches='tight')
-            np.save("storage_files_old_pT_bin/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_eta_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_eta)
+            np.save("storage_files/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_eta_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_eta)
 
             ###
             # pT
@@ -165,7 +165,7 @@ for seed in tqdm(np.concatenate([range(1,30),range(34,45),[46,47,48,49],range(54
             plt.xlabel("Particle-level $p_T^{jet}$",fontsize=15)
             plt.ylabel("step 2/step 1",fontsize=15)
             fig.savefig("storage_plots/"+mc_name[i]+"_"+mc_tag_out[i]+"Iteration"+str(iteration)+"_"+str(seed)+cut_label+"_Step2_pT.pdf",bbox_inches='tight')
-            np.save("storage_files_old_pT_bin/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_pT_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_pT)
+            np.save("storage_files/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_pT_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_pT)
 
             ###
             # dphi
@@ -205,7 +205,7 @@ for seed in tqdm(np.concatenate([range(1,30),range(34,45),[46,47,48,49],range(54
 
 
             fig.savefig("storage_plots/"+mc_name[i]+"_"+mc_tag_out[i]+"Iteration"+str(iteration)+"_"+str(seed)+cut_label+"_Step2_dphi.pdf",bbox_inches='tight')
-            np.save("storage_files_old_pT_bin/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_dphi_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_dphi)
+            np.save("storage_files/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_dphi_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_dphi)
 
 
             ###
@@ -245,4 +245,4 @@ for seed in tqdm(np.concatenate([range(1,30),range(34,45),[46,47,48,49],range(54
 
 
             fig.savefig("storage_plots/"+mc_name[i]+"_"+mc_tag_out[i]+"Iteration"+str(iteration)+"_"+str(seed)+cut_label+"_Step2_qT.pdf",bbox_inches='tight')
-            np.save("storage_files_old_pT_bin/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_qT_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_qT)
+            np.save("storage_files/"+mc_name[i]+"_"+mc_tag_out[i]+"n_Omni_step2_qT_iteration"+str(iteration)+"_"+str(seed)+cut_label,n_Omni_step2_qT)
